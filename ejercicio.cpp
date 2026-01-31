@@ -1,14 +1,3 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
-struct Nodo {
-    int id;
-    string nombre;
-    float peso;
-    Nodo* sig;
-    Nodo* ant;
-};
 
 
 void mostrarAdelante(Nodo* head) {
@@ -42,13 +31,12 @@ void mostrarAtras(Nodo* tail) {
 }
 
 
-int contarPaquetes(Nodo* head) {
-    int contador = 0;
-    Nodo* aux = head;
 
-    while (aux != nullptr) {
-        contador++;
-        aux = aux->sig;
-    }
-    return contador;
-}
+
+case 3:
+    mostrarAdelante(head);
+    break;
+
+case 4:
+    mostrarAtras(tail);
+    break;
