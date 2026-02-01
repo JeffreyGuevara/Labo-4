@@ -68,6 +68,35 @@ bool insertarFinal(Nodo*& head, Nodo*& tail, int id, string nombre, float peso) 
     return true;
 }
 
+void mostrarAdelante(Nodo* head) {
+    if (head == NULL) {
+        cout << "Lista vacia.\n";
+        return;
+    }
+
+    Nodo* aux = head;
+    while (aux != NULL) {
+        cout << "ID: " << aux->id
+             << " | Nombre: " << aux->nombre
+             << " | Peso: " << aux->peso << " kg\n";
+        aux = aux->sig;
+    }
+}
+void mostrarAtras(Nodo* tail) {
+    if (tail == NULL) {
+        cout << "Lista vacia.\n";
+        return;
+    }
+
+    Nodo* aux = tail;
+    while (aux != NULL) {
+        cout << "ID: " << aux->id
+             << " | Nombre: " << aux->nombre
+             << " | Peso: " << aux->peso << " kg\n";
+        aux = aux->ant;
+    }
+}
+
 bool eliminarPorId(Nodo*& head, Nodo*& tail, int id) {
     Nodo* act = buscarPorId(head, id);
     if (act == NULL) return false;
@@ -153,6 +182,39 @@ int main() {
             cin >> peso;
             insertarInicio(head, tail, id, nombre, peso);
             break;
+
+        case 3:
+            mostrarAdelante(head);
+            break;
+
+        case 4:
+            mostrarAtras(tail);
+            break;
+
+        case 5: {
+            cout << "ID a buscar: ";
+            cin >> id;
+            Nodo* r = buscarPorId(head, id);
+            if (r)
+                cout << "Encontrado: " << r->nombre << " | Peso: " << r->peso << "\n";
+            else
+                cout << "No encontrado.\n";
+            break;
+        }
+
+        case 6:
+            cout << "ID a eliminar: ";
+            cin >> id;
+            if (eliminarPorId(head, tail, id))
+                cout << "Eliminado.\n";
+            else
+                cout << "No existe.\n";
+            break;
+
+        case 7:
+            cout << "Cantidad de paquetes: " << contar(head) << "\n";
+            break;
+        
         }
 
     } while (op != 9);
