@@ -91,6 +91,15 @@ bool eliminarPorId(Nodo*& head, Nodo*& tail, int id) {
     return true;
 }
 
+int contar(Nodo* head) {
+    int c = 0;
+    Nodo* aux = head;
+    while (aux != NULL) {
+        c++;
+        aux = aux->sig;
+    }
+    return c;
+}
 
 int main() {
     Nodo* head = NULL;
@@ -104,7 +113,13 @@ int main() {
         cout << "\n--- SISTEMA DE PAQUETES (INSERTAR) ---\n";
         cout << "1. Insertar paquete al final\n";
         cout << "2. Insertar paquete al inicio\n";
-        cout << "3. Salir\n";
+        cout << "3. Mostrar lista adelante";
+        cout << "4. Insertar lista atras\n";
+        cout << "5. Buscar paquete por id\n";
+        cout << "6. Eliminar paque por id\n";
+        cout << "7. Mostrar cantidad\n";
+        cout << "8. Mostrar lista adelante\n";
+        cout << "9. Salir\n";
         cout << "Opcion: ";
         cin >> op;
 
@@ -130,7 +145,7 @@ int main() {
             break;
         }
 
-    } while (op != 2);
+    } while (op != 9);
 
     return 0;
 }
