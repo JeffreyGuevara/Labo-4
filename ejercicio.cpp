@@ -97,6 +97,21 @@ void mostrarAtras(Nodo* tail) {
     }
 }
 
+bool editarPaquete(Nodo* head, int id) {
+    Nodo* aux = head;
+
+    while (aux != NULL) {
+        if (aux->id == id) {
+            cout << "Nuevo nombre: ";
+            cin >> aux->nombre;
+            cout << "Nuevo peso: ";
+            cin >> aux->peso;
+            return true;
+        }
+        aux = aux->sig;
+    }
+    return false;
+}
 
 bool eliminarPorId(Nodo*& head, Nodo*& tail, int id) {
     Nodo* act = buscarPorId(head, id);
@@ -153,7 +168,7 @@ int main() {
         cout << "\n--- SISTEMA DE PAQUETES (INSERTAR) ---\n";
         cout << "1. Insertar paquete al final\n";
         cout << "2. Insertar paquete al inicio\n";
-        cout << "3. Mostrar lista adelante";
+        cout << "3. Mostrar lista adelante\n";
         cout << "4. Insertar lista atras\n";
         cout << "5. Buscar paquete por id\n";
         cout << "6. Eliminar paque por id\n";
