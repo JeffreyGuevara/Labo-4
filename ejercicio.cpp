@@ -101,6 +101,16 @@ int contar(Nodo* head) {
     return c;
 }
 
+void liberarLista(Nodo*& head, Nodo*& tail) {
+    Nodo* aux = head;
+    while (aux != NULL) {
+        Nodo* borrar = aux;
+        aux = aux->sig;
+        delete borrar;
+    }
+    head = tail = NULL;
+}
+
 int main() {
     Nodo* head = NULL;
     Nodo* tail = NULL;
