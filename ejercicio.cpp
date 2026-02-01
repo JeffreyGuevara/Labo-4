@@ -97,6 +97,7 @@ void mostrarAtras(Nodo* tail) {
     }
 }
 
+
 bool eliminarPorId(Nodo*& head, Nodo*& tail, int id) {
     Nodo* act = buscarPorId(head, id);
     if (act == NULL) return false;
@@ -157,7 +158,7 @@ int main() {
         cout << "5. Buscar paquete por id\n";
         cout << "6. Eliminar paque por id\n";
         cout << "7. Mostrar cantidad\n";
-        cout << "8. Mostrar lista adelante\n";
+        cout << "8. Editar paquete por id\n";
         cout << "9. Salir\n";
         cout << "Opcion: ";
         cin >> op;
@@ -213,6 +214,14 @@ int main() {
 
         case 7:
             cout << "Cantidad de paquetes: " << contar(head) << "\n";
+            break;
+        case 8:
+             cout << "ID del paquete a editar: ";
+            cin >> id;
+            if (editarPaquete(head, id))
+            cout << "Paquete editado correctamente.\n";
+            else
+            cout << "No se encontro el paquete.\n";
             break;
         
         }
