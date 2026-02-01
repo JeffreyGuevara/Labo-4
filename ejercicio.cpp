@@ -68,6 +68,29 @@ bool insertarFinal(Nodo*& head, Nodo*& tail, int id, string nombre, float peso) 
     return true;
 }
 
+bool eliminarPorId(Nodo*& head, Nodo*& tail, int id) {
+    Nodo* act = buscarPorId(head, id);
+    if (act == NULL) return false;
+
+    if (act == head && act == tail) {
+        head = tail = NULL;
+    }
+    else if (act == head) {
+        head = head->sig;
+        head->ant = NULL;
+    }
+    else if (act == tail) {
+        tail = tail->ant;
+        tail->sig = NULL;
+    }
+    else {
+        act->ant->sig = act->sig;
+        act->sig->ant = act->ant;
+    }
+    delete act;
+    return true;
+}
+
 
 int main() {
     Nodo* head = NULL;
@@ -107,7 +130,7 @@ int main() {
             break;
         }
 
-    } while (op != 3);
+    } while (op != 2);
 
     return 0;
 }
